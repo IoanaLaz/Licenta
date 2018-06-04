@@ -1,0 +1,68 @@
+
+<p>
+
+    <img src="assets/prescription.jpg" align="center" width=500 height=250  />
+  </p>
+<p-dataTable [value]="prescriptions" selectionMode="single" [(selection)]="selectedClient" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+    <p-header>Prescription Details</p-header>
+    <p-column field="id" header="Id" [sortable]="true"></p-column>
+      <p-column field="id_client" header="Id_client" [sortable]="true"></p-column>
+      <p-column field="id_drug" header="Id_drug" [sortable]="true"></p-column>
+      <p-column field="hander" header="Hander" [sortable]="true"></p-column>
+      <p-column field="diagnostic" header="Diagnostic" [sortable]="true"></p-column>
+      <p-column field="prescription_type" header="Prescription_type" [sortable]="true"></p-column>
+      <p-column field="release_date" header="Release_date" [sortable]="true"></p-column>
+      <p-column field="dosage" header="Dosage" [sortable]="true"></p-column>
+      <p-column field="createdAt" header="Created At" [sortable]="true"></p-column>
+      <p-column field="updatedAt" header="Updated At" [sortable]="true"></p-column>
+      <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+  </p-dataTable>
+
+  <p-dialog header="Prescription Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="prescription">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="id_client">Id_client</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id_client" [(ngModel)]="prescription.id_client" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="id_drug">Id_drug</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id_drug" [(ngModel)]="prescription.id_drug" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="hander">Hander</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="hander" [(ngModel)]="prescription.hander" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="diagnostic">Diagnostic</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="diagnostic" [(ngModel)]="prescription.diagnostic" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="prescription_type">Prescription_type</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="prescription" [(ngModel)]="prescription.prescription_type" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="release_date">Release_date</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="release_date" [(ngModel)]="prescription.release_date" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="dosage">Dosage</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="dosage" [(ngModel)]="prescription.dosage" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="createdAt">CreatedAt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="createdAt" [(ngModel)]="prescription.createdAt" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="updatedAt">UpdatedAt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="updatedAt" [(ngModel)]="prescription.updatedAt" /></div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="edit()" label="Edit"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+  

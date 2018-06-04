@@ -1,0 +1,52 @@
+<p>
+
+    <img src="assets/client.jpg" align="center" width=500 height=250  />
+  </p>
+<p-dataTable [value]="clients" selectionMode="single" [(selection)]="selectedClient" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+  <p-header>Client Details</p-header>
+  <p-column field="id" header="Id" [sortable]="true"></p-column>
+    <p-column field="name" header="Name" [sortable]="true"></p-column>
+    <p-column field="birthday" header="Birthday" [sortable]="true"></p-column>
+    <p-column field="sex" header="Sex" [sortable]="true"></p-column>
+    <p-column field="address" header="Address" [sortable]="true"></p-column>
+    <p-column field="createdAt" header="Created At" [sortable]="true"></p-column>
+    <p-column field="updatedAt" header="Updated At" [sortable]="true"></p-column>
+    <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+</p-dataTable>
+
+
+<p-dialog header="Client Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="client">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="name">Name</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="client.name" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="birthday">Birthday</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="birthday" [(ngModel)]="client.birthday" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="sex">Sex</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="sex" [(ngModel)]="client.sex" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="address">Address</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="address" [(ngModel)]="client.address" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="createdAt">CreatedAt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="createdAt" [(ngModel)]="client.createdAt" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="updatedAt">UpdatedAt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="updatedAt" [(ngModel)]="client.updatedAt" /></div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="edit()" label="Edit"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>

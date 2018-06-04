@@ -1,0 +1,48 @@
+<p-dataTable [value]="bills" selectionMode="single" [(selection)]="selectedBill" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+    <p-header>Bill Details</p-header>
+    <p-column field="id" header="Id" [sortable]="true"></p-column>
+      <p-column field="is_sale" header="Id_sale" [sortable]="true"></p-column>
+      <p-column field="sale_date" header="Sale_date" [sortable]="true"></p-column>
+      <p-column field="payment" header="Payment" [sortable]="true"></p-column>
+      <p-column field="createdAt" header="Created At" [sortable]="true"></p-column>
+      <p-column field="updatedAt" header="Updated At" [sortable]="true"></p-column>
+      <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left"  (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+  </p-dataTable>
+
+
+  <p-dialog header="Bill Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="bill">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="id_sale">Id_sale</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id_sale" [(ngModel)]="bill.id_sale" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="sale_date">Sale_date</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="sale_date" [(ngModel)]="bill.sale_date" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="payment">Payment</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="payment" [(ngModel)]="bill.payment" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="createdAt">CreatedAt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="createdAt" [(ngModel)]="bill.createdAt" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="updatedAt">UpdatedAt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="updatedAt" [(ngModel)]="bill.updatedAt" /></div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="edit()" label="Edit"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p>
+
+    <img src="assets/bill.jpg" align="center" width=500 height=300  />
+  </p>
