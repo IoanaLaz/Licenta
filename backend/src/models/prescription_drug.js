@@ -7,10 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     prescription_drug.associate = (models) => {
-        console.log("-> prescription belongs to patient");
-        prescription.belongsTo(models.patient, { foreignKey: 'id_patient', onDelete: 'CASCADE'});
-        console.log("-> prescription belongs to doctor") ;
-        prescription.belongsTo(models.doctor, {foreignKey: 'id_doctor', onDelete: 'CASCADE'})
+        // console.log("-> prescription belongs to patient");
+        // prescription.belongsTo(models.patient, { foreignKey: 'id_patient', onDelete: 'CASCADE'});
+        // console.log("-> prescription belongs to doctor") ;
+        // prescription.belongsTo(models.doctor, {foreignKey: 'id_doctor', onDelete: 'CASCADE'})
     }
 
     return prescription;

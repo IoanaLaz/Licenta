@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('prescriptions', {
+        queryInterface.createTable('patients', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -9,34 +9,26 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
 
-            date: {
-                type: Sequelize.DATE
+            name: {
+                type: Sequelize.STRING,
+                allowNull: false
             },
 
-            id_doctor: {
+            birthday: {
+                type: Sequelize.DATE,
+            },
+            username: {
+                type: Sequelize.STRING,
+            },
+
+            password: {
+                type: Sequelize.STRING,
+            },
+
+            id_prescription: {
                 type: Sequelize.INTEGER
             },
 
-            id_drug: {
-                type: Sequelize.INTEGER
-            },
-
-            id_patient: {
-                type: Sequelize.INTEGER
-            },
-
-            diagnostic: {
-                type: Sequelize.STRING
-            },
-
-            release_date: {
-                type: Sequelize.DATE
-            },
-
-            dosage: {
-                type: Sequelize.INTEGER
-            },
-            
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
@@ -48,6 +40,6 @@ module.exports = {
         });
     },
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('prescriptions');
+        queryInterface.dropTable('patients');
     }
 };

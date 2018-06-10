@@ -4,15 +4,12 @@ module.exports = (sequelize, DataTypes) => {
         name: DataTypes.STRING,
         birthday: DataTypes.DATE,
         specialization: DataTypes.STRING,
-        town: DataTypes.STRING,
-        username: DataTypes.VARCHAR,
-        password: DataTypes.VARCHAR,
+        username: DataTypes.STRING,
+        password: DataTypes.STRING,
         id_prescription: DataTypes.INTEGER
-    });
-    doctor.associate = (models) => {
-        console.log("-> one to many");
-        // doctor.hasToMany (models.prescription, { foreignKey: 'id_drug' });
-
-    }
+    }, {});
+    doctor.associate = function (models) {
+        // associations can be defined here
+    };
     return doctor;
 };
