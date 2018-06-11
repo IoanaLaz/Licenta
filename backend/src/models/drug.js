@@ -6,19 +6,20 @@ module.exports = (sequelize, DataTypes) => {
         amount: DataTypes.INTEGER,
         price: DataTypes.INTEGER
     });
+
     drug.associate = (models) => {
-        console.log("-> many to many");
         drug.belongsToMany(models.prescription, {
             through: {
-                model: 'prescription_drug'
+                model: models.prescription_drug
             }
-        }, { foreignKey: 'id_drug' });
+        }, { foreignKey: 'drugId' });
         console.log("->drug belongs to substance");
         drug.belongsToMany(models.substance, {
             through: {
-                model: 'drug_substance'
+                model: models.drug_substance,
+                unique: false,
             }
-        }, { foreignKey: 'id_drug' });
+        }, { foreignKey: 'drugId', onDelete: 'CASCADE' });
     }
     return drug;
 };

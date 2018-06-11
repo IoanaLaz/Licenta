@@ -2,7 +2,6 @@
 module.exports = (sequelize, DataTypes) => {
     var prescription = sequelize.define('prescription', {
         date: DataTypes.DATE,
-        id_doctor: DataTypes.INTEGER,
         id_patient: DataTypes.INTEGER,
         diagnostic: DataTypes.STRING,
         release_date: DataTypes.DATE,
@@ -13,12 +12,13 @@ module.exports = (sequelize, DataTypes) => {
         console.log("-> prescription belongs to patient");
         prescription.belongsTo(models.patient, { foreignKey: 'id_patient', onDelete: 'CASCADE' });
         console.log("-> prescription belongs to doctor");
-        prescription.belongsTo(models.doctor, { foreignKey: 'id_doctor', onDelete: 'CASCADE' });
+        prescription.hasMany(models.doctor, { foreignKey: 'id_prescription', onDelete: 'CASCADE' });
         prescription.belongsToMany(models.drug, {
             through: {
-                model: 'prescription_drug',
+                model: models.prescription_drug,
+                unique: false,
             }
-        }, { foreignKey: 'id_prescription', onDelete: 'CASCADE' });
+        }, { foreignKey: 'prescriptionId', onDelete: 'CASCADE' });
     }
 
     return prescription;

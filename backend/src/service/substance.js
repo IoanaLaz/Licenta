@@ -4,7 +4,7 @@ const substance = require('../models').substance;
 
 exports.list = function (req, res) {
     substance.findAll({
-        include: [{ all:true }]
+        include: [{ all: true }]
     }).then(substance => {
         res.jsonp(substance);
     });

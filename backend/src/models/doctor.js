@@ -7,9 +7,10 @@ module.exports = (sequelize, DataTypes) => {
         username: DataTypes.STRING,
         password: DataTypes.STRING,
         id_prescription: DataTypes.INTEGER
-    }, {});
+    });
+
     doctor.associate = function (models) {
-        // associations can be defined here
+        doctor.belongsTo(models.prescription, { foreignKey: 'id_prescription', onDelete: 'CASCADE' })
     };
     return doctor;
 };

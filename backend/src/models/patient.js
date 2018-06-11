@@ -5,12 +5,11 @@ module.exports = (sequelize, DataTypes) => {
         birthday: DataTypes.DATE,
         username: DataTypes.STRING,
         password: DataTypes.STRING,
-        id_prescription: DataTypes.INTEGER
 
     });
     patient.associate = (models) => {
         console.log(" -> patient has many prescriptions");
-        patient.hasMany(models.prescription, { foreignKey: 'id_prescription' })
+        patient.hasMany(models.prescription, { foreignKey: 'id_patient' })
     }
     return patient;
 };

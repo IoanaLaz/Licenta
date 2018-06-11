@@ -25,10 +25,6 @@ module.exports = {
                 type: Sequelize.STRING,
             },
 
-            id_prescription: {
-                type: Sequelize.INTEGER
-            },
-
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

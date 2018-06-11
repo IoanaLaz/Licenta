@@ -13,10 +13,6 @@ module.exports = {
                 type: Sequelize.DATE
             },
 
-            id_doctor: {
-                type: Sequelize.INTEGER
-            },
-
             id_drug: {
                 type: Sequelize.INTEGER
             },

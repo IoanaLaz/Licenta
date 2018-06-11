@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     });
     substance.associate = (models) => {
         console.log("-> substance belongs to substance");
-        patient.belongsToMany(models.drug, {
+        substance.belongsToMany(models.drug, {
             through: {
-                model: drug_substance
+                model: models.drug_substance
             }
-        }, { foreignKey: 'id_substance' })
+        }, { foreignKey: 'substanceId' })
     }
     return substance;
 };
