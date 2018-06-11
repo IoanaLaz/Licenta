@@ -23,39 +23,37 @@ app.use(cookieParser());
 
 
 // Controllers
-var index = require('./src/rest/index');
-var bill = require('./src/rest/bill')
-var client = require('./src/rest/patient');
+var doctor = require('./src/rest/doctor')
 var drug = require('./src/rest/drug');
+var patient = require('./src/rest/patient');
 var prescription = require('./src/rest/prescription');
-var sale = require('./src/rest/sale');
+var substance = require('./src/rest/substance');
 
-app.use('/api', index);
-app.use('/api/bill', bill);
-app.use('/api/client', client);
+app.use('/api/doctor', doctor);
 app.use('/api/drug', drug);
+app.use('/api/patient', patient);
 app.use('/api/prescription', prescription);
-app.use('/api/sale', sale);
+app.use('/api/substance', substance);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // render the error page
-  res.jsonp(err.status || 500);
+app.use(function (err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // render the error page
+    res.jsonp(err.status || 500);
 });
 
 app.use(function (err, req, res, next) {
-  console.error(err.stack)
-  res.status(500).send('Something broke!')
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
 })
 
 module.exports = app;

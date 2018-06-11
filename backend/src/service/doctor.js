@@ -3,10 +3,12 @@
 const doctor = require('../models').doctor;
 
 exports.list = function (req, res) {
+    console.log('ceva');
     doctor.findAll({
-        include: [{ all:true }]
-    }).then(doctor => {
-        res.jsonp(doctor);
+        include: [{ all: true }]
+    }).then(doctors => {
+        console.log(doctors);
+        res.jsonp(doctors);
     });
 };
 

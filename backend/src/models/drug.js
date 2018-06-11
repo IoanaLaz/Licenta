@@ -1,15 +1,25 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var drug = sequelize.define('drug', {
-    name: DataTypes.STRING,
-    amount: DataTypes.INTEGER,
-    price: DataTypes.INTEGER
-  });
-  drug.associate = (models) => {
-    console.log("-> many to many");
-   // drug.belongsToMany (models.prescription, { foreignKey: 'id_drug' });
-    console.log("->drug belongs to sales");
-    //drug.belongsTo (models.sale, { foreignKey: 'id_drug'});
-  }
-  return drug;
+    var drug = sequelize.define('drug', {
+        name: DataTypes.STRING,
+        producer: DataTypes.STRING,
+        amount: DataTypes.INTEGER,
+        price: DataTypes.INTEGER
+    });
+
+    drug.associate = (models) => {
+        drug.belongsToMany(models.prescription, {
+            through: {
+                model: models.prescription_drug
+            }
+        }, { foreignKey: 'drugId' });
+        console.log("->drug belongs to substance");
+        drug.belongsToMany(models.substance, {
+            through: {
+                model: models.drug_substance,
+                unique: false,
+            }
+        }, { foreignKey: 'drugId', onDelete: 'CASCADE' });
+    }
+    return drug;
 };

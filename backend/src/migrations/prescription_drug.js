@@ -1,38 +1,19 @@
 'use strict';
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('prescriptions', {
-            id: {
+        return queryInterface.createTable('prescription_drugs', {
+            drugId: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-
-            date: {
-                type: Sequelize.DATE
-            },
-
-            id_drug: {
+            prescriptionId: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
                 type: Sequelize.INTEGER
             },
-
-            id_patient: {
-                type: Sequelize.INTEGER
-            },
-
-            diagnostic: {
-                type: Sequelize.STRING
-            },
-
-            release_date: {
-                type: Sequelize.DATE
-            },
-
-            dosage: {
-                type: Sequelize.INTEGER
-            },
-            
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
@@ -44,6 +25,6 @@ module.exports = {
         });
     },
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('prescriptions');
+        return queryInterface.dropTable('prescription_drugs');
     }
 };
