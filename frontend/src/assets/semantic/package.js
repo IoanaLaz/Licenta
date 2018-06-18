@@ -1,5 +1,5 @@
 var
-  where = 'client' // Adds files only to the client
+  where = 'client' // Adds files only to the patient
 ;
 
 Package.describe({

@@ -1,0 +1,105 @@
+<body>
+
+
+<style>
+    input[type=text], input[type=password]  {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid black;
+        border-radius: 4px;
+    }
+
+</style>
+<form id="login" >
+    <div class=login>
+
+        <h2 style="color:black">Login</h2>
+
+        <form>
+            <p>
+                <font size="3" color="black">
+                    Username:<input type="text" name="username" [(ngModel)]="username">
+                </font>
+            </p>
+        </form>
+
+        <form>
+            <p>
+                <font size="3" color="black">
+                    Password:<input type="password" name="password" [(ngModel)]="password">
+                </font>
+            </p>
+        </form>
+
+        <p class="text-danger">{{status}}</p>
+
+        <button type="button" class="button" (click)="onClick()">Log in</button>
+    </div>
+
+
+    <img src="assets/teacher.jpg" width=500 height=500  />
+
+    <form id="register" >
+        <div class=register>
+            <fieldset>
+                <h2 style="color:black">Sign in</h2>
+
+
+                <form>
+                    <p>
+                        <font size="3" color="black">
+                            Name:
+                            <input type="text" name="name" [(ngModel)]="name">
+                        </font>
+                    </p>
+                </form>
+
+                <form>
+                    <p>
+                        <font size="3" color="black">
+                            E-mail:
+                            <input type="text" name="email"  [(ngModel)]="email">
+                        </font>
+                    </p>
+                </form>
+
+                <form>
+                    <p>
+                        <font size="3" color="black">
+                            Username:
+                            <input type="text" name="username2"  [(ngModel)]="username2">
+                        </font>
+                    </p>
+                </form>
+
+                <label for="idPassword">Password</label>
+                <input type="password" class="form-control" id="idPassword" name="password" [(ngModel)]="password2">
+
+                <label for="idPassword2">Repeat Password</label>
+                <input type="password" class="form-control" id="idPassword2" name="password2" [(ngModel)]="password3">
+                <p class="text-danger">{{status2}}</p>
+
+                <button type="button" class="button" (click)="onRegisterClick()">Sign in</button>
+
+            </fieldset>
+            <fieldset>
+                <div>
+                    <input type="radio" class="form-check-input" name="isTeacher" id="optionsRadios1" [value]=false checked="" [(ngModel)]="isTeacher"> Student
+                    <br>
+                    <input type="radio" class="form-check-input" name="isTeacher" id="optionsRadios2" [value]=true checked="" [(ngModel)]="isTeacher"> Profesor
+
+                </div>
+            </fieldset>
+        </div>
+
+
+
+    </form>
+
+
+
+
+</form>
+</body>
