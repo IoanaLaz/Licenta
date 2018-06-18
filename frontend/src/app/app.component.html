@@ -6,9 +6,15 @@
 <sui-sidebar-container class="ui bottom attached segment">
   <sui-sidebar class="inverted vertical" #sidebar>
     <a class="item"routerLink="/home">Home</a>
-    <a class="item"routerLink="/patient">Patient</a>
     <a class="item"routerLink="/doctor">Doctor</a>
+    <a class="item"routerLink="/patient">Patient</a>
+    <a class="item"routerLink="/prescription">Prescription</a>
+    <a class="item"routerLink="/drug">Drug</a>
+    <a class="item"routerLink="/drug_substance">Drug_substance</a>
+    <a class="item"routerLink="/prescription_drug">Prescription_drug</a>
+    <a class="item"routerLink="/substance">Substance</a>
     <a class="item"routerLink="/signin">Sign in</a>
+
   </sui-sidebar>
   <sui-sidebar-sibling [isDimmedWhenVisible]="true">
     <router-outlet></router-outlet>

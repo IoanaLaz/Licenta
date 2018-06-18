@@ -1,0 +1,45 @@
+
+<p-dataTable [value]="prescriptions" selectionMode="single" [(selection)]="selectedPrescription" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+    <p-header>Prescription Details</p-header>
+    <p-column field="id" header="Id" [sortable]="true"></p-column>
+    <p-column field="date" header="Date" [sortable]="true"></p-column>
+    <p-column field="id_doctor" header="Id_doctor" [sortable]="true"></p-column>
+    <p-column field="id_patient" header="Id_patient" [sortable]="true"></p-column>
+    <p-column field="createdAt" header="Created At" [sortable]="true"></p-column>
+    <p-column field="updatedAt" header="Updated At" [sortable]="true"></p-column>
+    <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+</p-dataTable>
+
+
+<p-dialog header="Prescription Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="prescription">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="date">Date</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="date" [(ngModel)]="prescription.date" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="id_doctor">Id_doctor</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id_doctor" [(ngModel)]="prescription.id_doctor" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="id_patient">Id_patient</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id_patient" [(ngModel)]="prescription.id_patient" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="createdAt">CreatedAt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="createdAt" [(ngModel)]="prescription.createdAt" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="updatedAt">UpdatedAt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="updatedAt" [(ngModel)]="prescription.updatedAt" /></div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="edit()" label="Edit"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+  

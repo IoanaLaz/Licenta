@@ -1,42 +1,47 @@
 
-<p-dataTable [value]="drugs" selectionMode="single" [(selection)]="selectedClient" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
-    <p-header>Drug Details</p-header>
+<p-dataTable [value]="doctors" selectionMode="single" [(selection)]="selectedDoctor" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+    <p-header>Doctor Details</p-header>
     <p-column field="id" header="Id" [sortable]="true"></p-column>
       <p-column field="name" header="Name" [sortable]="true"></p-column>
-      <p-column field="producer" header="Producer" [sortable]="true"></p-column>
-      <p-column field="supply" header="Supply" [sortable]="true"></p-column>
-      <p-column field="price" header="Price" [sortable]="true"></p-column>
+      <p-column field="birthday" header="Birthday" [sortable]="true"></p-column>
+      <p-column field="specialization" header="Specialization" [sortable]="true"></p-column>
+      <p-column field="username" header="Username" [sortable]="true"></p-column>
+      <p-column field="password" header="Password" [sortable]="true"></p-column>
       <p-column field="createdAt" header="Created At" [sortable]="true"></p-column>
       <p-column field="updatedAt" header="Updated At" [sortable]="true"></p-column>
       <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
   </p-dataTable> 
   
   
-  <p-dialog header="Drug Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
-    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="drug">
+  <p-dialog header="Doctor Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="doctor">
         <div class="ui-grid-row">
             <div class="ui-grid-col-4"><label for="name">Name</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="drug.name" /></div>
+            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="doctor.name" /></div>
         </div>
         <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="producer">Producer</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="producer" [(ngModel)]="drug.producer" /></div>
+            <div class="ui-grid-col-4"><label for="birthday">Birthday</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="birthday" [(ngModel)]="doctor.birthday" /></div>
         </div>
         <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="supply">Supply</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="supply" [(ngModel)]="drug.supply" /></div>
+            <div class="ui-grid-col-4"><label for="specialization">Specialization</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="specialization" [(ngModel)]="doctor.specialization" /></div>
         </div>
         <div class="ui-grid-row">
-          <div class="ui-grid-col-4"><label for="price">Price</label></div>
-          <div class="ui-grid-col-8"><input pInputText id="price" [(ngModel)]="drug.price" /></div>
-      </div>
+        <div class="ui-grid-col-4"><label for="username">Username</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="username" [(ngModel)]="doctor.username" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="password">Password</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="password" [(ngModel)]="doctor.password" /></div>
+        </div>
         <div class="ui-grid-row">
             <div class="ui-grid-col-4"><label for="createdAt">CreatedAt</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="createdAt" [(ngModel)]="drug.createdAt" /></div>
+            <div class="ui-grid-col-8"><input pInputText id="createdAt" [(ngModel)]="doctor.createdAt" /></div>
         </div>
         <div class="ui-grid-row">
             <div class="ui-grid-col-4"><label for="updatedAt">UpdatedAt</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="updatedAt" [(ngModel)]="drug.updatedAt" /></div>
+            <div class="ui-grid-col-8"><input pInputText id="updatedAt" [(ngModel)]="doctor.updatedAt" /></div>
         </div>
     </div>
     <p-footer>

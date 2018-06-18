@@ -1,6 +1,6 @@
 
-<p-dataTable [value]="patients" selectionMode="single" [(selection)]="selectedpatient" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
-  <p-header>patient Details</p-header>
+<p-dataTable [value]="patients" selectionMode="single" [(selection)]="selectedPatient" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+  <p-header>Patient Details</p-header>
   <p-column field="id" header="Id" [sortable]="true"></p-column>
     <p-column field="name" header="Name" [sortable]="true"></p-column>
     <p-column field="birthday" header="Birthday" [sortable]="true"></p-column>

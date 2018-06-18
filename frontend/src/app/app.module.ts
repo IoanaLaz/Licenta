@@ -25,7 +25,12 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 import { PatientComponent } from './components/pages/patient/patient.component';
 import { DoctorComponent } from './components/pages/doctor/doctor.component';
-import { SigninComponent } from './components/pages/signin/signin.component';
+import { PrescriptionComponent } from './components/pages/prescription/prescription.component';
+import { DrugComponent } from './components/pages/drug/drug.component';
+import { DrugSubstanceComponent } from './components/pages/drug_substance/drug_substance.component';
+import { PrescriptionDrugComponent } from './components/pages/prescription_drug/prescription_drug.component';
+import { SubstanceComponent } from './components/pages/substance/substance.component';
+//import { SigninComponent } from './components/pages/signin/signin.component';
 
 
 @NgModule({
@@ -35,7 +40,12 @@ import { SigninComponent } from './components/pages/signin/signin.component';
     NavbarComponent,
     PatientComponent,
     DoctorComponent,
-    SigninComponent
+    PrescriptionComponent,
+    DrugComponent,
+    DrugSubstanceComponent,
+    PrescriptionDrugComponent,
+    SubstanceComponent
+    //SigninComponent
   ],
   imports: [
     AppRoutingModule,
