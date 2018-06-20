@@ -8,6 +8,8 @@ import {DrugComponent} from './components/pages/drug/drug.component';
 import {DrugSubstanceComponent} from './components/pages/drug_substance/drug_substance.component';
 import {PrescriptionDrugComponent} from './components/pages/prescription_drug/prescription_drug.component';
 import { SubstanceComponent } from './components/pages/substance/substance.component';
+import {SinginPatientDoctorComponent} from './components/pages/singin-patient-doctor/singin-patient-doctor.component';
+import {PatientInfoComponent} from './components/pages/patient-info/patient-info.component';
 //import {SigninComponent} from './components/pages/signin/signin.component';
 
 const routes: Routes = [
@@ -19,7 +21,9 @@ const routes: Routes = [
     {path: 'drug', component: DrugComponent},
     {path: 'drug_substance', component: DrugSubstanceComponent},
     {path: 'prescription_drug', component: PrescriptionDrugComponent},
-    {path: 'substance', component: SubstanceComponent}
+    {path: 'substance', component: SubstanceComponent},
+    {path: 'login' , component: SinginPatientDoctorComponent},
+    {path: 'patient-info', component: PatientInfoComponent}
 
     //{path: 'signin', component: SigninComponent}
     // otherwise redirect to home

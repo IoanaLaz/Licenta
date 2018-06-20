@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+// import {Component, OnInit} from '@angular/core';
 // import { UserService } from '../../user-service.service';
 // import { User } from '../../user';
-import {Router} from '@angular/router';
+// import {Router} from '@angular/router';
 
 // @Component({
 //     selector: 'app-login',
@@ -83,5 +83,5 @@ import {Router} from '@angular/router';
 //             }
 //         });
 //     }
-}
+// }
 

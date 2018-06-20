@@ -2,7 +2,7 @@
 
 
 <style>
-    input[type=text], input[type=password]  {
+    input[type=text], input[type=password] {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
@@ -12,7 +12,7 @@
     }
 
 </style>
-<form id="login" >
+<form id="login">
     <div class=login>
 
         <h2 style="color:black">Login</h2>
@@ -39,9 +39,9 @@
     </div>
 
 
-    <img src="assets/teacher.jpg" width=500 height=500  />
+    <img src="assets/teacher.jpg" width=500 height=500/>
 
-    <form id="register" >
+    <form id="register">
         <div class=register>
             <fieldset>
                 <h2 style="color:black">Sign in</h2>
@@ -60,7 +60,7 @@
                     <p>
                         <font size="3" color="black">
                             E-mail:
-                            <input type="text" name="email"  [(ngModel)]="email">
+                            <input type="text" name="email" [(ngModel)]="email">
                         </font>
                     </p>
                 </form>
@@ -69,7 +69,7 @@
                     <p>
                         <font size="3" color="black">
                             Username:
-                            <input type="text" name="username2"  [(ngModel)]="username2">
+                            <input type="text" name="username2" [(ngModel)]="username2">
                         </font>
                     </p>
                 </form>
@@ -86,19 +86,18 @@
             </fieldset>
             <fieldset>
                 <div>
-                    <input type="radio" class="form-check-input" name="isTeacher" id="optionsRadios1" [value]=false checked="" [(ngModel)]="isTeacher"> Student
+                    <input type="radio" class="form-check-input" name="isTeacher" id="optionsRadios1" [value]=false
+                           checked="" [(ngModel)]="isTeacher"> Student
                     <br>
-                    <input type="radio" class="form-check-input" name="isTeacher" id="optionsRadios2" [value]=true checked="" [(ngModel)]="isTeacher"> Profesor
+                    <input type="radio" class="form-check-input" name="isTeacher" id="optionsRadios2" [value]=true
+                           checked="" [(ngModel)]="isTeacher"> Profesor
 
                 </div>
             </fieldset>
         </div>
 
 
-
     </form>
-
-
 
 
 </form>
