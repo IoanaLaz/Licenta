@@ -3,11 +3,11 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 
 @Component({
-    selector: 'app-patient-info',
-    templateUrl: './patient-info.component.html',
-    styleUrls: ['./patient-info.component.less']
+    selector: 'app-doctor-info',
+    templateUrl: './doctor_info.component.html',
+    styleUrls: ['./doctor_info.component.less']
 })
-export class PatientInfoComponent implements OnInit {
+export class DoctorInfoComponent implements OnInit {
     httpOptions = {
         headers: new HttpHeaders({
             'Authorization': localStorage.getItem('token')
@@ -21,24 +21,24 @@ export class PatientInfoComponent implements OnInit {
         console.log('ceva');
         this.sync();
         if (!localStorage.getItem('token')) {
-            this.router.navigate(['login']);
+            this.router.navigate(['logindoctor']);
         }
     }
     sync() {
-        this.http.post('http://localhost:3000/api/patient/sync', {}, this.httpOptions)
-            .subscribe(patient => {
+        this.http.post('http://localhost:3000/api/doctor/sync', {}, this.httpOptions)
+            .subscribe(doctor => {
                 console.log('ceva');
-                console.log(patient);
-                // this.subjects = patient['student']['subjects'] as string[];
+                console.log(doctor);
+                // this.subjects = doctor['doctor']['subjects'] as string[];
             }, (err: HttpErrorResponse) => {
                 console.log(err.message);
                 localStorage.removeItem('token');
-                this.router.navigate(['login']);
+                this.router.navigate(['logindoctor']);
             });
     }
 
     onLogOut() {
         localStorage.removeItem('token');
-        this.router.navigate(['login']);
+        this.router.navigate(['logindoctor']);
     }
 }

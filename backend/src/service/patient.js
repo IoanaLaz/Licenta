@@ -32,7 +32,7 @@ exports.login = (req, res) => {
     }).then(patient => {
         if (!patient) {
             return res.status(204).send({
-                message: "student not found!"
+                message: "Patient not found!"
             });
         }
         let tokenString = jwt.sign({

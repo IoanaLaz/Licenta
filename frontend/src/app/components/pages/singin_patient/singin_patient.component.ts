@@ -3,11 +3,11 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
-    selector: 'app-singin-patient-doctor',
-    templateUrl: './singin-patient-doctor.component.html',
-    styleUrls: ['./singin-patient-doctor.component.less']
+    selector: 'app-singin-patient',
+    templateUrl: './singin_patient.component.html',
+    styleUrls: ['./singin_patient.component.less']
 })
-export class SinginPatientDoctorComponent implements OnInit {
+export class SinginPatientComponent implements OnInit {
     notFound = false;
 
     constructor(private router: Router, private http: HttpClient) {
@@ -15,7 +15,7 @@ export class SinginPatientDoctorComponent implements OnInit {
 
     ngOnInit() {
         if (localStorage.getItem('token')) {
-            this.router.navigate(['patient-info']);
+            this.router.navigate(['patient_info']);
         }
     }
 
@@ -26,16 +26,16 @@ export class SinginPatientDoctorComponent implements OnInit {
         const password = e.target.elements[1].value;
 
         this.post(username, password)
-            .subscribe((receivedStudent) => {
-                    if (!receivedStudent) {
+            .subscribe((receivedPatient) => {
+                    if (!receivedPatient) {
                         console.log('unauthorized');
                         this.notFound = true;
                     } else {
-                        console.log(receivedStudent);
-                        localStorage.setItem('token', receivedStudent['token']);
+                        console.log(receivedPatient);
+                        localStorage.setItem('token', receivedPatient['token']);
                         this.notFound = false;
                         // this.user.setUserLoggedIn();
-                        this.router.navigate(['patient-info']);
+                        this.router.navigate(['patient_info']);
                     }
                 },
                 err => console.log(err));
