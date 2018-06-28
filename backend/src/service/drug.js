@@ -4,7 +4,7 @@ const drug = require('../models').drug;
 
 exports.list = function (req, res) {
     drug.findAll({
-        include: [{ all: true }]
+        include: [{all: true}]
     }).then(drug => {
         res.jsonp(drug);
     });
@@ -16,7 +16,9 @@ exports.create = function (req, res) {
 
 exports.findById = function (req, res) {
     let id = req.params.id;
-    drug.findById(id).then(drug => {
+    drug.findById(id, {
+        include: [{all: true}]
+    }).then(drug => {
         res.jsonp(drug);
     });
 };
@@ -32,7 +34,7 @@ exports.updateDrug = function (req, res) {
             }
             drug.update(req.body, {
                 where:
-                    { id: id }
+                    {id: id}
             }).then(() => res.status(200).send())
                 .catch(error => res.status(400).send(error));
         })

@@ -18,69 +18,56 @@
         <label for="sel1">Select a patient:</label>
         <select class="form-control" id="sel1" (change)="activateNav($event.target.value)">
             <option value="" selected disabled hidden>Choose here</option>
-            <option *ngFor="let patient of patients" [value]="patient.birthday">
+            <option *ngFor="let patient of patients" [value]="patient.id">
                 {{ patient.name }}
             </option>
         </select>
     </div>
 
-
-    <div class="birthday" [hidden]="!choosen">
+    <div class="birthday" [hidden]="!chosen">
         <label for="birthday">Birthday:</label>
-        <textarea class="form-control" rows="1" id="birthday">{{ choosenPatient }}</textarea>
+        <textarea *ngIf="chosen" class="form-control" rows="1" id="birthday">{{ chosenPatient.birthday }}</textarea>
     </div>
 
 
-    <ul class="nav nav-tabs" [hidden]="!choosen">
+    <ul class="nav nav-tabs" [hidden]="!chosen">
         <li><a data-toggle="tab" id="presc" href="#prescription">Prescription</a></li>
         <li><a data-toggle="tab" id="xr" href="#x-rays">X-Rays</a></li>
         <li><a data-toggle="tab" id="ana" href="#analyzes">Analyzes</a></li>
     </ul>
+
+    <button type="button" class="btn btn-info" (click)="addNewRow()">Add</button>
 
     <div class="tab-content">
         <div id="prescription" class="tab-pane fade">
             <table class="table table-bordered ">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">Diagnostic</th>
                     <th scope="col">Name</th>
                     <th scope="col">Dosage</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr *ngFor="let item of rows">
                     <td>
-                        <input type="text" class="form-control" size="1" >
+                        <input type="text" class="form-control diagnostic" size="1">
                     </td>
                     <td>
-                        <select class="form-control match-content" id="drugname">
+                        <select class="form-control match-content drugId" id="drugname" (change)="drugId($event.target.value)">
+                            <option value="" selected disabled hidden>Choose here</option>
                             <option *ngFor="let drug of drugs">
-                                {{ drug.name }}
+                                {{drug.id}} {{ drug.name }}
                             </option>
                         </select>
                     </td>
                     <td>
-                        <input type="text" class="form-control" size="1">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" class="form-control" size="1" >
-                    </td>
-                    <td>
-                        <select class="form-control match-content" id="drugname1">
-                            <option *ngFor="let drug of drugs">
-                                {{ drug.name }}
-                            </option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" size="1">
+                        <input type="text" class="form-control dosage" size="1">
                     </td>
                 </tr>
                 </tbody>
             </table>
-
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
         </div>
         <div id="x-rays" class="tab-pane fade">
             <h3>X-Rays</h3>
@@ -92,4 +79,5 @@
         </div>
     </div>
 </div>
+
 

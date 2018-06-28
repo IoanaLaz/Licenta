@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {ApiService} from '../../../service';
+import {Doctor} from '../../../models/doctor';
+import {Patient} from '../../../models/patient';
 
 @Component({
     selector: 'app-doctor-info',
@@ -19,10 +21,11 @@ export class DoctorInfoComponent implements OnInit {
     constructor(private http: HttpClient, private router: Router, private apiService: ApiService) {
     }
 
-    public choosen = false;
+    public chosen = false;
+    public rows = [];
     public patients = [];
     public drugs = [];
-    public choosenPatient = '';
+    public chosenPatient;
 
     ngOnInit() {
         this.refresh();
@@ -35,22 +38,24 @@ export class DoctorInfoComponent implements OnInit {
     refresh() {
         this.apiService.get('api/patient').subscribe(res => {
             this.patients = res;
-            console.log(res);
+            // console.log(res);
         });
         this.apiService.get('api/drug').subscribe(res => {
             this.drugs = res;
-            console.log(res);
+            // console.log(res);
         });
+    }
+
+    onSelectPatient() {
+        console.log(this.chosenPatient);
     }
 
     sync() {
         this.http.post('http://localhost:3000/api/doctor/sync', {}, this.httpOptions)
             .subscribe(doctor => {
-                console.log('ceva');
-                console.log(doctor);
                 // this.subjects = doctor['doctor']['subjects'] as string[];
             }, (err: HttpErrorResponse) => {
-                console.log(err.message);
+                // console.log(err.message);
                 localStorage.removeItem('token');
                 this.router.navigate(['logindoctor']);
             });
@@ -61,10 +66,34 @@ export class DoctorInfoComponent implements OnInit {
         this.router.navigate(['logindoctor']);
     }
 
+    addNewRow() {
+        this.rows.push(1);
+        console.log(this.rows);
+    }
+
+    drugId(targetValue) {
+        let id = targetValue.split(' ')[0];
+        console.log(id);
+    }
+
     activateNav(targetValue) {
-        this.choosen = true;
-        console.log(targetValue);
-        this.choosenPatient = targetValue;
+        this.chosen = true;
+        let i;
+        this.patients.forEach((elem, index) => {
+            if (targetValue == elem.id) {
+                i = index;
+            }
+        });
+        this.chosenPatient = this.patients[i];
+    }
+
+    save() {
+        let diagnostic = $('.diagnostic').val();
+        console.log(diagnostic);
+        let drugId = $('.drugId option:selected').text().trim().split(" ")[0];
+        console.log(drugId);
+        let dosage = $('.dosage').val();
+        console.log(dosage);
     }
 
 }

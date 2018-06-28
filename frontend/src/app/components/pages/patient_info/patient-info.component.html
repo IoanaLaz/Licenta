@@ -1,9 +1,9 @@
-
-
-
 <div class="container">
-    <h2>Dynamic Tabs</h2>
-    <p>To make the tabs toggleable, add the data-toggle="tab" attribute to each link. Then add a .tab-pane class with a unique ID for every tab and wrap them inside a div element with class .tab-content.</p>
+    <h2>Welcome!</h2>
+
+    <div class="" align="right">
+        <button class="btn btn-secondary" (click)="onLogOut()">Log out</button>
+    </div>
 
     <ul class="nav nav-tabs" >
         <li><a data-toggle="tab" id="presc" href="#prescription">Prescription</a></li>
@@ -13,16 +13,12 @@
 
     <div class="tab-content">
         <div id="prescription" class="tab-pane fade">
-            <h3>Prescription</h3>
-            <p>
-                <p-dataTable >
-                    <p-header>Prescription</p-header>
-                    <p-column field="id" header="Id" [sortable]="true"></p-column>
-                    <p-column field="name" header="Name" [sortable]="true"></p-column>
-                    <p-column field="birthday" header="Amount" [sortable]="true"></p-column>
-                </p-dataTable>
+            <ul class="list-group">
+                <li class="list-group-item">New <span class="badge"></span></li>
+                <li class="list-group-item">Deleted <span class="badge"></span></li>
+                <li class="list-group-item">Warnings <span class="badge"></span></li>
+            </ul>
 
-            </p>
         </div>
         <div id="x-rays" class="tab-pane fade">
             <h3>X-Rays</h3>
@@ -36,6 +32,4 @@
 </div>
 
 
-<div class="row justify-content-center position-top">
-    <button class="btn btn-secondary" (click)="onLogOut()">Log out</button>
-</div>
+
