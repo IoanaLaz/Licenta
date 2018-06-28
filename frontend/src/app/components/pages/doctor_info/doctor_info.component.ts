@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {ApiService} from '../../../service';
 
 @Component({
     selector: 'app-doctor-info',
@@ -13,17 +14,35 @@ export class DoctorInfoComponent implements OnInit {
             'Authorization': localStorage.getItem('token')
         })
     };
+    public patientList: String;
 
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient, private router: Router, private apiService: ApiService) {
     }
 
+    public choosen = false;
+    public patients = [];
+    public drugs = [];
+    public choosenPatient = '';
+
     ngOnInit() {
-        console.log('ceva');
+        this.refresh();
         this.sync();
         if (!localStorage.getItem('token')) {
             this.router.navigate(['logindoctor']);
         }
     }
+
+    refresh() {
+        this.apiService.get('api/patient').subscribe(res => {
+            this.patients = res;
+            console.log(res);
+        });
+        this.apiService.get('api/drug').subscribe(res => {
+            this.drugs = res;
+            console.log(res);
+        });
+    }
+
     sync() {
         this.http.post('http://localhost:3000/api/doctor/sync', {}, this.httpOptions)
             .subscribe(doctor => {
@@ -41,4 +60,11 @@ export class DoctorInfoComponent implements OnInit {
         localStorage.removeItem('token');
         this.router.navigate(['logindoctor']);
     }
+
+    activateNav(targetValue) {
+        this.choosen = true;
+        console.log(targetValue);
+        this.choosenPatient = targetValue;
+    }
+
 }

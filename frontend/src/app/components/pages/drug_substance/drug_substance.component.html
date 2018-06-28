@@ -1,7 +1,7 @@
 
 <p-dataTable [value]="drug_substances" selectionMode="single" [(selection)]="selectedDrug_substance" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
     <p-header>Drug_substance Details</p-header>
-    <p-column field="id" header="Id" [sortable]="true"></p-column>
+    <p-column field="id_drug" header="Id_drug" [sortable]="true"></p-column>
     <p-column field="id_substance" header="Id_substance" [sortable]="true"></p-column>
     <p-column field="createdAt" header="Created At" [sortable]="true"></p-column>
     <p-column field="updatedAt" header="Updated At" [sortable]="true"></p-column>
@@ -11,6 +11,10 @@
 
 <p-dialog header="Drug_substance Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
     <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="drug_substance">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="id_drug">Id_drug</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id_drug" [(ngModel)]="drug_substance.id_drug" /></div>
+        </div>
         <div class="ui-grid-row">
             <div class="ui-grid-col-4"><label for="id_substance">Id_substance</label></div>
             <div class="ui-grid-col-8"><input pInputText id="id_substance" [(ngModel)]="drug_substance.id_substance" /></div>

@@ -92,4 +92,6 @@ export class DoctorComponent implements OnInit {
     findSelectedDoctorIndex(): number {
         return this.doctors.indexOf(this.selectedDoctor);
     }
+
+
 }

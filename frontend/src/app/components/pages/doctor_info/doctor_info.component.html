@@ -1,7 +1,95 @@
-<p>
-    patient-info works!
+<div class="container">
+    <h2>Welcome!</h2>
 
-</p>
-<div class="row justify-content-center position-top">
-    <button class="btn btn-secondary" (click)="onLogOut()">Logout</button>
+    <div class="alert alert-success" role="alert">
+        This is a success alert—check it out!
+    </div>
+
+    <div class="alert alert-danger" role="alert">
+        This is a danger alert—check it out!
+    </div>
+
+    <div class="" align="right">
+        <button class="btn btn-secondary" (click)="onLogOut()">Log out</button>
+    </div>
+
+
+    <div class="selector">
+        <label for="sel1">Select a patient:</label>
+        <select class="form-control" id="sel1" (change)="activateNav($event.target.value)">
+            <option value="" selected disabled hidden>Choose here</option>
+            <option *ngFor="let patient of patients" [value]="patient.birthday">
+                {{ patient.name }}
+            </option>
+        </select>
+    </div>
+
+
+    <div class="birthday" [hidden]="!choosen">
+        <label for="birthday">Birthday:</label>
+        <textarea class="form-control" rows="1" id="birthday">{{ choosenPatient }}</textarea>
+    </div>
+
+
+    <ul class="nav nav-tabs" [hidden]="!choosen">
+        <li><a data-toggle="tab" id="presc" href="#prescription">Prescription</a></li>
+        <li><a data-toggle="tab" id="xr" href="#x-rays">X-Rays</a></li>
+        <li><a data-toggle="tab" id="ana" href="#analyzes">Analyzes</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="prescription" class="tab-pane fade">
+            <table class="table table-bordered ">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Dosage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" size="1" >
+                    </td>
+                    <td>
+                        <select class="form-control match-content" id="drugname">
+                            <option *ngFor="let drug of drugs">
+                                {{ drug.name }}
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" size="1">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" size="1" >
+                    </td>
+                    <td>
+                        <select class="form-control match-content" id="drugname1">
+                            <option *ngFor="let drug of drugs">
+                                {{ drug.name }}
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" size="1">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div id="x-rays" class="tab-pane fade">
+            <h3>X-Rays</h3>
+            <p></p>
+        </div>
+        <div id="analyzes" class="tab-pane fade">
+            <h3>Analyzes</h3>
+            <p></p>
+        </div>
+    </div>
 </div>
+

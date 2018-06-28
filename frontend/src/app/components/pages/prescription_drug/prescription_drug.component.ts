@@ -27,7 +27,7 @@ export class PrescriptionDrugComponent implements OnInit {
     }
 
     refresh() {
-        this.apiService.get('api/drug').subscribe(res => {
+        this.apiService.get('api/prescription_drug').subscribe(res => {
             this.prescription_drugs = res;
             console.log('called');
         });
@@ -41,7 +41,7 @@ export class PrescriptionDrugComponent implements OnInit {
 
     save() {
         console.log(this.selectedPrescription_drug);
-        this.apiService.post('api/drug', this.selectedPrescription_drug).subscribe(res => {
+        this.apiService.post('api/prescription_drug', this.selectedPrescription_drug).subscribe(res => {
             this.refresh();
         });
         this.displayDialog = false;

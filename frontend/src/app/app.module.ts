@@ -6,6 +6,8 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // UI
 import {SuiModule} from 'ng2-semantic-ui';
+// import {TabViewModule} from 'primeng/tabview';
+// import {DropdownModule} from 'primeng/dropdown';
 // Servicess
 import {ApiService} from './service';
 import {AppRoutingModule} from './app-routing.module';
@@ -29,6 +31,7 @@ import {SinginDoctorComponent} from './components/pages/singin_doctor/signin_doc
 import {PatientInfoComponent} from './components/pages/patient_info/patient-info.component';
 import {HttpClientModule} from '@angular/common/http';
 import {DoctorInfoComponent} from './components/pages/doctor_info/doctor_info.component';
+
 
 
 
@@ -64,7 +67,8 @@ import {DoctorInfoComponent} from './components/pages/doctor_info/doctor_info.co
         SharedModule,
         DataListModule,
         DialogModule,
-        ButtonModule
+        ButtonModule,
+        // TabViewModule,
     ],
     providers: [
         AppRoutingModule,

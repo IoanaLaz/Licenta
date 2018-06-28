@@ -5,7 +5,7 @@ const prescription = require('../models').prescription;
 exports.list = function (req, res, next) {
     prescription.findAll({
         where: req.query,
-        include: [{ all: true }]
+        include: [{all: true}]
     }).then(prescription => {
         res.jsonp(prescription);
         console.log(prescription)
@@ -19,7 +19,7 @@ exports.create = function (req, res) {
 exports.findById = function (req, res) {
     let id = req.params.id;
     prescription.findById(id, {
-        include: [{ model: user, as: 'prescription' }]
+        include: [{all: true}]
     }).then(prescription => {
         res.jsonp(prescription);
     });
@@ -27,7 +27,7 @@ exports.findById = function (req, res) {
 
 exports.findPrescription = function (req, res) {
     prescription.findById(req.params.id, {
-        include: [{ model: user, as: 'prescription' }]
+        include: [{model: user, as: 'prescription'}]
     }).then(prescription => {
         res.jsonp(prescription);
     })
@@ -44,7 +44,7 @@ exports.updatePrescription = function (req, res) {
             }
             prescription.update(req.body, {
                 where:
-                    { id: id }
+                    {id: id}
             }).then(() => res.status(200).send())
                 .catch(error => res.status(400).send(error));
         })
