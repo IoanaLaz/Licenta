@@ -88,12 +88,20 @@ export class DoctorInfoComponent implements OnInit {
     }
 
     save() {
-        let diagnostic = $('.diagnostic').val();
-        console.log(diagnostic);
-        let drugId = $('.drugId option:selected').text().trim().split(" ")[0];
-        console.log(drugId);
-        let dosage = $('.dosage').val();
-        console.log(dosage);
+        // let diagnostic = $('.diagnostic').val();
+        // console.log(diagnostic);
+        // let drugId = $('.drugId option:selected').text().trim().split(' ')[0];
+        // console.log(drugId);
+        // let dosage = $('.dosage').val();
+        // console.log(dosage);
+        // let body = {
+        //     diagnostic: diagnostic, id_drug: drugId, dosage: dosage, id_patient:this.chosenPatient.id
+        // };
+        // console.log(body);
+        // this.http.post('http://localhost:3000/api/prescription', body, this.httpOptions)
+        //     .subscribe(prescription => {
+        //         console.log('saved to the backend');
+        //     });
     }
 
 }

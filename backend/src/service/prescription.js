@@ -1,6 +1,13 @@
 "use strict";
 
 const prescription = require('../models').prescription;
+const prescription_drug = require('../models').prescription_drug;
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('hospital_prescription', 'postgres', null, {
+    host: 'localhost',
+    port: '32768',
+    dialect: 'postgres'
+});
 
 exports.list = function (req, res, next) {
     prescription.findAll({
@@ -13,7 +20,19 @@ exports.list = function (req, res, next) {
 };
 
 exports.create = function (req, res) {
-    res.jsonp(prescription.create(req.body));
+    console.log(req.body);
+    prescription.create(req.body).then(() => {
+        sequelize.query("SELECT MAX(id) FROM public.prescriptions", {type: sequelize.QueryTypes.SELECT})
+            .then((response => {
+                console.log(response);
+                let aux = {
+                    drugId: req.body.id_drug,
+                    prescriptionId: response[0].max
+                };
+
+                res.jsonp(prescription_drug.create(aux));
+            }));
+    });
 };
 
 exports.findById = function (req, res) {
