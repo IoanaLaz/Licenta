@@ -1,14 +1,6 @@
 <div class="container">
     <h2>Welcome!</h2>
 
-    <div class="alert alert-success" role="alert">
-        This is a success alert—check it out!
-    </div>
-
-    <div class="alert alert-danger" role="alert">
-        This is a danger alert—check it out!
-    </div>
-
     <div class="" align="right">
         <button class="btn btn-secondary" (click)="onLogOut()">Log out</button>
     </div>
@@ -54,7 +46,8 @@
                         <input type="text" class="form-control diagnostic" size="1">
                     </td>
                     <td>
-                        <select class="form-control match-content drugId" id="drugname" (change)="drugId($event.target.value)">
+                        <select class="form-control match-content drugId" id="drugname"
+                                (change)="drugId($event.target.value)">
                             <option value="" selected disabled hidden>Choose here</option>
                             <option *ngFor="let drug of drugs">
                                 {{drug.id}} {{ drug.name }}
@@ -68,6 +61,10 @@
                 </tbody>
             </table>
             <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+
+        <div class="alert alert-danger" role="alert" [hidden]="!isHarmful">
+            These two drugs cannot be combined!
         </div>
         <div id="x-rays" class="tab-pane fade">
             <h3>X-Rays</h3>

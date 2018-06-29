@@ -2,8 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {ApiService} from '../../../service';
-import {Doctor} from '../../../models/doctor';
-import {Patient} from '../../../models/patient';
+// import {Doctor} from '../../../models/doctor';
+// import {Patient} from '../../../models/patient';
+// import {$} from 'protractor';
+
+declare var jquery: any;
+declare var $: any;
 
 @Component({
     selector: 'app-doctor-info',
@@ -26,6 +30,7 @@ export class DoctorInfoComponent implements OnInit {
     public patients = [];
     public drugs = [];
     public chosenPatient;
+    public isHarmful = false;
 
     ngOnInit() {
         this.refresh();
@@ -67,8 +72,10 @@ export class DoctorInfoComponent implements OnInit {
     }
 
     addNewRow() {
-        this.rows.push(1);
-        console.log(this.rows);
+        if (this.rows.length < 2) {
+            this.rows.push(1);
+            console.log(this.rows);
+        }
     }
 
     drugId(targetValue) {
@@ -87,21 +94,28 @@ export class DoctorInfoComponent implements OnInit {
         this.chosenPatient = this.patients[i];
     }
 
-    save() {
-        // let diagnostic = $('.diagnostic').val();
-        // console.log(diagnostic);
-        // let drugId = $('.drugId option:selected').text().trim().split(' ')[0];
-        // console.log(drugId);
-        // let dosage = $('.dosage').val();
-        // console.log(dosage);
-        // let body = {
-        //     diagnostic: diagnostic, id_drug: drugId, dosage: dosage, id_patient:this.chosenPatient.id
-        // };
-        // console.log(body);
-        // this.http.post('http://localhost:3000/api/prescription', body, this.httpOptions)
-        //     .subscribe(prescription => {
-        //         console.log('saved to the backend');
-        //     });
-    }
+    // public diagnostic = [];
+    // public drugIds = [];
+    // public dosages = [];
 
+    save() {
+        if (this.rows.length === 1) {
+            let diagnostic = $('.diagnostic').val();
+            console.log(diagnostic);
+            let drugId = $('.drugId option:selected').text().trim().split(' ')[0];
+            console.log(drugId);
+            let dosage = $('.dosage').val();
+            console.log(dosage);
+            let body = {
+                diagnostic: diagnostic, id_drug: drugId, dosage: dosage, id_patient: this.chosenPatient.id
+            };
+            console.log(body);
+            this.http.post('http://localhost:3000/api/prescription', body, this.httpOptions)
+                .subscribe(prescription => {
+                    console.log('saved to the backend');
+                });
+        } else {
+            this.isHarmful = true;
+        }
+    }
 }

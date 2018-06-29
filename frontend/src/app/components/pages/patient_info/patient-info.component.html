@@ -13,12 +13,16 @@
 
     <div class="tab-content">
         <div id="prescription" class="tab-pane fade">
-            <ul class="list-group">
-                <li class="list-group-item">New <span class="badge"></span></li>
-                <li class="list-group-item">Deleted <span class="badge"></span></li>
-                <li class="list-group-item">Warnings <span class="badge"></span></li>
-            </ul>
-
+            <p-dataTable [value]="prescriptions" selectionMode="single" [(selection)]="selectedPrescription" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+                <p-header>Prescription Details</p-header>
+                <p-column field="id" header="Id" [sortable]="true"></p-column>
+                <p-column field="id_drug" header="Id_drug" [sortable]="true"></p-column>
+                <p-column field="id_patient" header="Id_patient" [sortable]="true"></p-column>
+                <p-column field="diagnostic" header="Diagnostic" [sortable]="true"></p-column>
+                <p-column field="createdAt" header="Created At" [sortable]="true"></p-column>
+                <p-column field="updatedAt" header="Updated At" [sortable]="true"></p-column>
+                <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+            </p-dataTable>
         </div>
         <div id="x-rays" class="tab-pane fade">
             <h3>X-Rays</h3>

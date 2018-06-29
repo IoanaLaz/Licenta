@@ -14,6 +14,9 @@ export class PatientInfoComponent implements OnInit {
         })
     };
 
+    public patient;
+    public prescriptions = [];
+
     constructor(private http: HttpClient, private router: Router) {
     }
 
@@ -24,11 +27,15 @@ export class PatientInfoComponent implements OnInit {
             this.router.navigate(['login']);
         }
     }
+
     sync() {
         this.http.post('http://localhost:3000/api/patient/sync', {}, this.httpOptions)
             .subscribe(patient => {
                 console.log('ceva');
-                console.log(patient);
+                this.patient = patient.patient;
+                console.log(this.patient);
+                this.prescriptions = this.patient.prescriptions;
+                console.log(this.prescriptions);
                 // this.subjects = patient['patient']['subjects'] as string[];
             }, (err: HttpErrorResponse) => {
                 console.log(err.message);
