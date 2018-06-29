@@ -69,7 +69,7 @@ exports.sync = (req, res) => {
             let date = new Date(decoded.updateDate);
             if (patient.updatedAt.getTime() === date.getTime()) {
                 res.status(200).send({
-                    student: patient,
+                    patient: patient,
                     message: 'Authorized'
                 });
             } else {
