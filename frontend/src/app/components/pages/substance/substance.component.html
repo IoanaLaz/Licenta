@@ -1,12 +1,12 @@
 
-<p-dataTable [value]="substances" selectionMode="single" [(selection)]="selectedSubstance" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+<p-dataTable [value]="substances" selectionMode="single" [(selection)]="selectedSubstance" (onRowSelect)="onRowSelect($event)" rows="15" [responsive]="true">
     <p-header>Substance Details</p-header>
     <p-column field="id" header="Id" [sortable]="true"></p-column>
     <p-column field="substance_name" header="Substance_name" [sortable]="true"></p-column>
     <p-column field="harmful_substance" header="Harmful_substance" [sortable]="true"></p-column>
     <p-column field="createdAt" header="Created At" [sortable]="true"></p-column>
     <p-column field="updatedAt" header="Updated At" [sortable]="true"></p-column>
-    <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+    <p-footer><div class="ui-helper-clearfix" style="width:100%"></div></p-footer>
 </p-dataTable>
 
 

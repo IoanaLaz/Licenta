@@ -7,13 +7,13 @@
 
     <ul class="nav nav-tabs" >
         <li><a data-toggle="tab" id="presc" href="#prescription">Prescription</a></li>
-        <li><a data-toggle="tab" id="xr" href="#x-rays">X-Rays</a></li>
-        <li><a data-toggle="tab" id= "ana" href="#analyzes">Analyzes</a></li>
+        <!--<li><a data-toggle="tab" id="xr" href="#x-rays">X-Rays</a></li>-->
+        <!--<li><a data-toggle="tab" id= "ana" href="#analyzes">Analyzes</a></li>-->
     </ul>
 
     <div class="tab-content">
         <div id="prescription" class="tab-pane fade">
-            <p-dataTable [value]="prescriptions" selectionMode="single" [(selection)]="selectedPrescription" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+            <p-dataTable [value]="prescriptions" selectionMode="single" [(selection)]="selectedPrescription" (onRowSelect)="onRowSelect($event)"  rows="15" [responsive]="true">
                 <p-header>Prescription Details</p-header>
                 <p-column field="id" header="Id" [sortable]="true"></p-column>
                 <p-column field="id_drug" header="Id_drug" [sortable]="true"></p-column>
@@ -21,17 +21,17 @@
                 <p-column field="diagnostic" header="Diagnostic" [sortable]="true"></p-column>
                 <p-column field="createdAt" header="Created At" [sortable]="true"></p-column>
                 <p-column field="updatedAt" header="Updated At" [sortable]="true"></p-column>
-                <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+                <p-footer><div class="ui-helper-clearfix" style="width:100%"></div></p-footer>
             </p-dataTable>
         </div>
-        <div id="x-rays" class="tab-pane fade">
-            <h3>X-Rays</h3>
-            <p></p>
-        </div>
-        <div id="analyzes" class="tab-pane fade">
-            <h3>Analyzes</h3>
-            <p></p>
-        </div>
+        <!--<div id="x-rays" class="tab-pane fade">-->
+            <!--<h3>X-Rays</h3>-->
+            <!--<p></p>-->
+        <!--</div>-->
+        <!--<div id="analyzes" class="tab-pane fade">-->
+            <!--<h3>Analyzes</h3>-->
+            <!--<p></p>-->
+        <!--</div>-->
     </div>
 </div>
 

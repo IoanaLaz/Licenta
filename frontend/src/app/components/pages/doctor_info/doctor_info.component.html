@@ -24,8 +24,8 @@
 
     <ul class="nav nav-tabs" [hidden]="!chosen">
         <li><a data-toggle="tab" id="presc" href="#prescription">Prescription</a></li>
-        <li><a data-toggle="tab" id="xr" href="#x-rays">X-Rays</a></li>
-        <li><a data-toggle="tab" id="ana" href="#analyzes">Analyzes</a></li>
+        <!--<li><a data-toggle="tab" id="xr" href="#x-rays">X-Rays</a></li>-->
+        <!--<li><a data-toggle="tab" id="ana" href="#analyzes">Analyzes</a></li>-->
     </ul>
 
     <button type="button" class="btn btn-info" (click)="addNewRow()">Add</button>
@@ -66,14 +66,14 @@
         <div class="alert alert-danger" role="alert" [hidden]="!isHarmful">
             These two drugs cannot be combined!
         </div>
-        <div id="x-rays" class="tab-pane fade">
-            <h3>X-Rays</h3>
-            <p></p>
-        </div>
-        <div id="analyzes" class="tab-pane fade">
-            <h3>Analyzes</h3>
-            <p></p>
-        </div>
+        <!--<div id="x-rays" class="tab-pane fade">-->
+            <!--<h3>X-Rays</h3>-->
+            <!--<p></p>-->
+        <!--</div>-->
+        <!--<div id="analyzes" class="tab-pane fade">-->
+            <!--<h3>Analyzes</h3>-->
+            <!--<p></p>-->
+        <!--</div>-->
     </div>
 </div>
 
